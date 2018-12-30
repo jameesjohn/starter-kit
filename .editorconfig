@@ -5,6 +5,6 @@ root = true
 indent_size = 4
 charset = utf-8
 end_of_line = crlf
-indent_style = space
+indent_style = tab
 insert_final_newline = true
 trim_trailing_whitespace = true
