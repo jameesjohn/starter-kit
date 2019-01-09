@@ -4,11 +4,15 @@
     "author": "James John James",
     "license": "MIT",
     "scripts": {
-		"prestart": "babel-node buildScripts/startMessage.js",
-		"start": "npm-run-all --parallel open:src",
+		"share": "lt --port 3000",
+		"lint:watch" : "npm run lint -- --watch",
 		"open:src" : "babel-node buildScripts/srcServer.js",
+		"prestart": "babel-node buildScripts/startMessage.js",
+		"start": "npm-run-all --parallel open:src lint:watch test:watch",
+		"lint" : "esw webpack.config.* src buildScripts --color",
 		"preshare": "babel-node buildScripts/messages/startSharing.js",
-		"share": "lt --port 3000"
+		"test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
+		"test:watch" : "npm test -- --watch"
 	},
     "dependencies": {
         "whatwg-fetch": "1.0.0"
